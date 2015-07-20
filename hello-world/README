@@ -1,0 +1,56 @@
+See Here : http://www.ibm.com/developerworks/cn/java/j-pg02179.html
+
+1. source /etc/profile
+
+2. groovyc HelloGroovyWorld.groovy
+
+3. java HelloGroovyWorld
+Exception in thread "main" java.lang.NoClassDefFoundError: groovy/lang/Script
+    at java.lang.ClassLoader.defineClass1(Native Method)
+    at java.lang.ClassLoader.defineClass(ClassLoader.java:800)
+    at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+    at java.net.URLClassLoader.defineClass(URLClassLoader.java:449)
+    at java.net.URLClassLoader.access$100(URLClassLoader.java:71)
+    at java.net.URLClassLoader$1.run(URLClassLoader.java:361)
+    at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+    at java.security.AccessController.doPrivileged(Native Method)
+    at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+    at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+    at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+    at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+    at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)
+Caused by: java.lang.ClassNotFoundException: groovy.lang.Script
+    at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+    at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+    at java.security.AccessController.doPrivileged(Native Method)
+    at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+    at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+    at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+    at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+    ... 13 more
+
+4. java -cp  $GROOVY_HOME/embeddable/groovy-all-2.4.3.jar:. HelloGroovyWorld
+Hello Groovy World
+
+5. javac HelloJavaWorld.java
+
+6. java HelloJavaWorld
+Hello Java World
+
+7. javap  HelloGroovyWorld
+Compiled from "HelloGroovyWorld.groovy"
+public class HelloGroovyWorld extends groovy.lang.Script {
+  public static transient boolean __$stMC;
+  public HelloGroovyWorld();
+  public HelloGroovyWorld(groovy.lang.Binding);
+  public static void main(java.lang.String...);
+  public java.lang.Object run();
+  protected groovy.lang.MetaClass $getStaticMetaClass();
+}
+
+8. javap HelloJavaWorld
+Compiled from "HelloJavaWorld.java"
+public class HelloJavaWorld {
+  public HelloJavaWorld();
+  public static void main(java.lang.String[]);
+}
